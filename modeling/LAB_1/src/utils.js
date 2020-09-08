@@ -35,39 +35,63 @@ function getRoundNumbers(numbers, precision = 1) {
 }
 
 function getPossibleProbabilities(precision) {
-  const cof = 10 * precision
+  const cof = 10 ** precision
 
   return new Array(cof)
     .fill(null)
     .map((_, index) => index / cof)
 }
 
-function getHitRate(numbers, values) {
-  const frequency = new Map(values.map(item => [item, 0]))
+function getRanges(prob) {
+  const {length} = prob
 
-  numbers.forEach(num => {
-    if (frequency.has(num)) {
-      const count = frequency.get(num)
-      frequency.set(num, count + 1)
+  return prob.map((item, index) => {
+    if (length - 1 === index) {
+      return {
+        name: `[${item}, 1)`,
+        scope: [item, 1]
+      }
+    }
+    return {
+      name: `[${item}, ${prob[index + 1]})`,
+      scope: [item, prob[index + 1]]
     }
   })
-
-  return [...frequency.entries()]
 }
 
-function getStackedHits(sortHitRate) {
-  let prevFrequency = null
-  return sortHitRate.map((item, index) => {
-    if (index === 0) {
-      prevFrequency = item[1]
-      return item
-    }
-    const [value, frequency] = item
-    const newFrequency = frequency + prevFrequency
-    
-    prevFrequency = newFrequency
-    return [value, newFrequency]
+function getHitRate(numbers, intervalPrecision) {
+  const prob = getPossibleProbabilities(intervalPrecision)
+  const ranges = getRanges(prob)
+
+  const a = ranges.map(({name, scope}) => {
+    const count = numbers.filter(num => {
+      return num >= scope[0] && num < scope[1]
+    }).length 
+    return {name, scope, count}
   })
+  console.log('getHitRate -> a', a)
+  return a
+}
+
+function getStackedHits(hitRate) {
+  let prevCount = 0
+  return hitRate.map((item) => {
+    const {count} = item
+    const newCount = count + prevCount
+    prevCount = newCount
+    return {...item, count: newCount}
+  })
+}
+
+function calcProbabilities(hitRate, numberOfElements) {
+  return hitRate.map(([num, hits]) => {
+    const prob = hits / numberOfElements
+    return [num, +prob.toFixed(4)]
+  })
+}
+
+function calcMatchExpect(probabilities) {
+  return probabilities.reduce((acc, [num, prob]) => acc + num * prob, 0)
 }
 
 export {
@@ -75,5 +99,7 @@ export {
   getRandomNumbers,
   getRoundNumbers,
   getHitRate,
-  getStackedHits
+  getStackedHits,
+  calcProbabilities,
+  calcMatchExpect
 } 

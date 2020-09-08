@@ -21,8 +21,8 @@ const chartOptions = {
 
 function createFrequencyHistogram(hitRate) {
   const data = chartOptions.data
-  data.labels = hitRate.map(i => i[0])
-  data.datasets[0].data = hitRate.map(i => i[1])
+  data.labels = hitRate.map(({name}) => name)
+  data.datasets[0].data = hitRate.map(({count}) => count)
 
   return chartOptions 
 }

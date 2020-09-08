@@ -1,5 +1,5 @@
 const chartOptions = {
-  type: 'line',
+  type: 'bar',
   data: {
       datasets: [{
           lineTension: 0,
@@ -22,8 +22,8 @@ const chartOptions = {
 
 function createStatisticalDistributionFunction(stackedHits) {
   const data = chartOptions.data
-  data.labels = stackedHits.map(i => i[0])
-  data.datasets[0].data = stackedHits.map(i => i[1])
+  data.labels = stackedHits.map(({name}) => name)
+  data.datasets[0].data = stackedHits.map(({count}) => count)
 
   return chartOptions 
 }

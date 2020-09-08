@@ -7,19 +7,22 @@ import {
   getRandomNumbers, 
   getRoundNumbers, 
   getHitRate,
-  getStackedHits
+  getStackedHits,
+  calcProbabilities,
+  calcMatchExpect
 } from './utils.js'
 
 const Y1 = 3215
 const Y2 = 4073
 const M = 4096 * 4
-const PRECISION = 2
+const PRECISION = 1
+const N = 1000
 
 const initalValues = {
   y0: Y1,
   y1: Y2,
   m: M,
-  n: 1000,
+  n: N,
 }
 
 const query = (selctor) => document.querySelector(selctor)
@@ -28,15 +31,17 @@ const ctxFrequencyHistogram = query('#frequency-histogram');
 const ctxStatisticalDistributionFunction = query('#statistical-distribution-function');
 
 const randomNumbers = getRandomNumbers(initalValues)
-const roundRandomValues = getRoundNumbers(randomNumbers, PRECISION)
-const possibleProbabilities = getPossibleProbabilities(PRECISION)
-const hitRate = getHitRate(roundRandomValues, possibleProbabilities)
-const sortHitRate = hitRate.sort((a, b) => a[0] > b[0])
-const stackedHits = getStackedHits(sortHitRate) 
+
+const hitRate = getHitRate(randomNumbers, PRECISION)
+const stackedHits = getStackedHits(hitRate) 
+
+// const numberOfElements = randomNumbers.length
+// const probabilities = calcProbabilities(hitRate, numberOfElements)
+// const matchExpect = calcMatchExpect(probabilities)
 
 new Chart(
   ctxFrequencyHistogram,
-  createFrequencyHistogram(sortHitRate)
+  createFrequencyHistogram(hitRate)
 );
 
 new Chart(

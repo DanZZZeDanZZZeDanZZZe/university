@@ -12,18 +12,21 @@
   top: 0;
   right: 0;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 4rem;
+  padding: 0 4rem;
   z-index: 1000;
   background: cornflowerblue;
 }
 
-.header__title {
-  align-self: center;
-  padding-left: 1rem;
+.title {
+  color: white;
 }
 
-.title {
-  color: white
+.sign {
+  color: white;
+  font-size: 1.2rem;
 }
 
 /* content */
@@ -35,9 +38,9 @@
   margin-top: 3rem;
 }
 
-/* chart-holder */
+/* content-box */
 
-.chart-holder {
+.content-box {
   position: relative;
   width: 50rem;
   height: 30rem;
@@ -48,7 +51,10 @@
   box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.212);
 }
 
-.chart-holder__chart-name {
+.content-box__chart-name {
   text-align: center;
+}
+
+.chart-name {
   font-size: 1.2rem;
 }
