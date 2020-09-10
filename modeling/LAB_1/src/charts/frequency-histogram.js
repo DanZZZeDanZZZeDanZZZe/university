@@ -2,7 +2,7 @@ const chartOptions = {
   type: 'bar',
   data: {
       datasets: [{
-          label: 'Гистограмма частот',
+          label: 'Число попаданий в интервал',
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'black',
           borderWidth: 1

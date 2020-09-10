@@ -3,7 +3,7 @@ const chartOptions = {
   data: {
       datasets: [{
           lineTension: 0,
-          label: 'Cтатистическая функция распределения',
+          label: 'Число попаданий в интервал с накоплением',
           backgroundColor: 'rgba(255, 206, 86, 0.2)',
           borderColor: 'black',
           borderWidth: 1

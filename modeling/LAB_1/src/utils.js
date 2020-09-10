@@ -69,7 +69,6 @@ function getHitRate(numbers, intervalPrecision) {
     }).length 
     return {name, scope, count}
   })
-  console.log('getHitRate -> a', a)
   return a
 }
 
@@ -83,23 +82,44 @@ function getStackedHits(hitRate) {
   })
 }
 
-function calcProbabilities(hitRate, numberOfElements) {
-  return hitRate.map(([num, hits]) => {
-    const prob = hits / numberOfElements
-    return [num, +prob.toFixed(4)]
+function calcNormFreq(hitRate, precision) {
+  const {length} = hitRate
+
+  return hitRate.map((item) => {
+    const {count} = item
+    return {...item, freq: count / length * 10 * precision}
   })
 }
 
-function calcMatchExpect(probabilities) {
-  return probabilities.reduce((acc, [num, prob]) => acc + num * prob, 0)
+function calcMatchExpect(prob, precision = 3) {
+  const sum = prob.reduce((a, b) => a + b)
+  return +(sum / prob.length).toFixed(precision)
+}
+
+function calcDispersion(prob, matchExpect, precision = 3) {
+  const numerator = prob.reduce((acc, num) => acc + (num - matchExpect) ** 2, 0)
+  return +(numerator / prob.length).toFixed(precision)
+}
+
+function calcNCentralMoment(prob, precision = 3, n) {
+  const numerator = prob.reduce((acc, num) => acc + (num) ** n, 0)
+  return +(numerator / prob.length).toFixed(precision)
+}
+
+function calcSeconCentralMoment(prob, precision = 3) {
+  return calcNCentralMoment(prob, precision, 2)
+}
+
+function calcThirdCentralMoment(prob, precision = 3) {
+  return calcNCentralMoment(prob, precision, 3)
 }
 
 export {
-  getPossibleProbabilities,
   getRandomNumbers,
-  getRoundNumbers,
   getHitRate,
   getStackedHits,
-  calcProbabilities,
-  calcMatchExpect
+  calcMatchExpect,
+  calcDispersion,
+  calcSeconCentralMoment,
+  calcThirdCentralMoment
 } 
