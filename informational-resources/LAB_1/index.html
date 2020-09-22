@@ -5,29 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>LAB 1</title>
+  <style>
+    .title-page-header {
+      color: #37da1b;      
+    }
+    .task__title {
+      color: #39b400;      
+    }
+  </style>
 </head>
 <body class="page__body body">
-  <header class="body__header header">
-    <p>Министерство науки и высшего образования РФ</p>
-    <p>Рязанский государственный радиотехнический университет имени В.Ф.Уткина</p>
-    <p>Кафедра вычислительной и прикладной математики</p>
+  <header class="body__title-page title-page">
+    <div class="title-page__title-page-header title-page-header">
+      <p>Министерство науки и высшего образования РФ</p>
+      <h1>Рязанский государственный радиотехнический университет имени В.Ф.Уткина</h1>
+      <h2>Кафедра вычислительной и прикладной математики</h2>
+    </div>
+    <div class="title-page__title-page-main title-page-main">
+      <div class="title-page-main__lab-name">
+        <h3>Лабораторная работа №1</h3>
+        <p>"Применение стилей"</p>
+      </div>
+      <div class="title-page-main__info">
+        <div>
+          <p class="title-page-main__bold-text">Выполнил:</p>
+          <p>ст.гр.744 Гранкин А.Н.</p>
+        </div>
+        <div>
+          <p class="title-page-main__bold-text">Проверил:</p>
+          <p>Каратаев А.Т.</p>
+        </div>
+      </div>
+    </div>
+    <div class="title-page__title-page-footer title-page-footer">
+      <p>Рязань 2020</p>
+    </div>
   </header>
   <main class="body__main main">
-    <h1 class="main__title main__title_normalized-font">Лабораторная работа №1</h1>
-    <h2 class="main__subtitle main__subtitle_normalized-font">"Название"</h2>
-    <aside class="main__info info">
-      <div>
-        <p>Выполнил:</p>
-        <p>ст.гр.744 Гранкин А.Н.</p>
-      </div>
-      <div>
-        <p>Проверил:</p>
-        <p>Каратаев А.Т.</p>
-      </div>
-    </aside>
+    <div class="main__task task">
+      <p class="task__title">Задание</p>
+      <p class="task__text" style="color: blueviolet;">Текст</p>
+    </div>
+    <div class="main__decision decision">
+      <ul class="category-list">
+        <li class="border" style="color: brown;">HTML 4
+          <ol type="a">
+            <li>Интернационализация</li>
+            <li>Доступность</li>
+            <li>Таблицы</li>
+            <li>Составные документы</li>
+            <li>Таблицы стилей</li>
+            <li>Сценарии (скрипты)</li>
+            <li>Печать</li>
+          </ol>
+        </li>
+        <li class="border" style="color: rgb(42, 99, 165);" >Создание документов HTML 4
+          <ol type="a">
+            <li>Разделение структуры и представления</li>
+            <li>Предусматривайте универсальность доступа к Web</li>
+            <li>Помогайте пользовательским агентам (ПА) созданием элементов, загружаемых по частям</li>
+          </ol>
+        </li>
+      </ul>
+    </div>
   </main>
-  <footer class="body__footer footer">
-    <p>Рязань 2020</p>
-  </footer>
 </body>
 </html>
