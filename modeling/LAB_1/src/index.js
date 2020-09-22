@@ -33,7 +33,13 @@ const ctxStatisticalDistributionFunction = query('#statistical-distribution-func
 
 const randomNumbers = getRandomNumbers(initalValues)
 const hitRate = getHitRate(randomNumbers, PRECISION)
-const stackedHits = getStackedHits(hitRate) 
+
+const normolizeHitRate = hitRate.map((item) => {
+  const {count} = item
+  return {...item, count: count / N}
+})
+
+const normolizeStackedHits = getStackedHits(normolizeHitRate) 
 const matchExpect = calcMatchExpect(randomNumbers)
 
 insert('.MO', matchExpect)
@@ -43,10 +49,10 @@ insert('.third', calcThirdCentralMoment(randomNumbers))
 
 new Chart(
   ctxFrequencyHistogram,
-  createFrequencyHistogram(hitRate)
+  createFrequencyHistogram(normolizeHitRate)
 );
 
 new Chart(
   ctxStatisticalDistributionFunction,
-  createStatisticalDistributionFunction(stackedHits)
+  createStatisticalDistributionFunction(normolizeStackedHits)
 );

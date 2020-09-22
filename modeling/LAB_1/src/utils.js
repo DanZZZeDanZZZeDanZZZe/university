@@ -30,10 +30,6 @@ function getRandomNumbers({ y0, y1, m, n }) {
   })
 }
 
-function getRoundNumbers(numbers, precision = 1) {
-  return numbers.map(item => +item.toFixed(precision))
-}
-
 function getPossibleProbabilities(precision) {
   const cof = 10 ** precision
 
@@ -79,15 +75,6 @@ function getStackedHits(hitRate) {
     const newCount = count + prevCount
     prevCount = newCount
     return {...item, count: newCount}
-  })
-}
-
-function calcNormFreq(hitRate, precision) {
-  const {length} = hitRate
-
-  return hitRate.map((item) => {
-    const {count} = item
-    return {...item, freq: count / length * 10 * precision}
   })
 }
 
