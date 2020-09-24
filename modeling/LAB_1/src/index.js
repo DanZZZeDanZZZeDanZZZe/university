@@ -11,6 +11,12 @@ import {
   calcSeconCentralMoment,
   calcThirdCentralMoment
 } from './utils.js'
+import {
+  clacX2forEquiprobable
+} from './test-criteria/pearson-test'
+import {
+  calcKolmogorovTest
+} from './test-criteria/kolmogorov-test'
 
 const Y1 = 3215
 const Y2 = 4073
@@ -42,11 +48,6 @@ const normolizeHitRate = hitRate.map((item) => {
 const normolizeStackedHits = getStackedHits(normolizeHitRate) 
 const matchExpect = calcMatchExpect(randomNumbers)
 
-insert('.MO', matchExpect)
-insert('.D', calcDispersion(randomNumbers, matchExpect))
-insert('.second', calcSeconCentralMoment(randomNumbers))
-insert('.third', calcThirdCentralMoment(randomNumbers))
-
 new Chart(
   ctxFrequencyHistogram,
   createFrequencyHistogram(normolizeHitRate)
@@ -56,3 +57,15 @@ new Chart(
   ctxStatisticalDistributionFunction,
   createStatisticalDistributionFunction(normolizeStackedHits)
 );
+
+insert('.MO', matchExpect)
+insert('.D', calcDispersion(randomNumbers, matchExpect))
+insert('.second', calcSeconCentralMoment(randomNumbers))
+insert('.third', calcThirdCentralMoment(randomNumbers))
+
+const hitRateCounts = hitRate.map(({count}) => count)
+const x2 = clacX2forEquiprobable(hitRateCounts, N)
+const kolmogorovTest = calcKolmogorovTest(randomNumbers)
+
+console.log('x2', x2)
+console.log('kolmogorovTest', kolmogorovTest)
