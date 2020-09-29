@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>LAB 2</title>
+</head>
+<body class="page__body body">
+  <header class="body__title-page title-page">
+    <div class="title-page__title-page-header title-page-header">
+      <p>Министерство науки и высшего образования РФ</p>
+      <h1>Рязанский государственный радиотехнический университет имени В.Ф.Уткина</h1>
+      <h2>Кафедра вычислительной и прикладной математики</h2>
+    </div>
+    <div class="title-page__title-page-main title-page-main">
+      <div class="title-page-main__lab-name">
+        <h3>Лабораторная работа №3</h3>
+        <p>"Изучение разметки табличных данных. Изучение CSS"</p>
+      </div>
+      <div class="title-page-main__info">
+        <div>
+          <p class="title-page-main__bold-text">Выполнил:</p>
+          <p>ст.гр.744 Гранкин А.Н.</p>
+        </div>
+        <div>
+          <p class="title-page-main__bold-text">Проверил:</p>
+          <p>Коратаев А.Т.</p>
+        </div>
+      </div>
+    </div>
+    <div class="title-page__title-page-footer title-page-footer">
+      <p>Рязань 2020</p>
+    </div>
+  </header>
+  <main class="body__main main">
+    <div class="main__task task">
+      <p class="task__title">Изучение разметки табличных данных. Изучение CSS</p>
+      <div class="task__text">
+        <p>Необходимо сверстать документ (HTML), который отображает таблицу:</p>
+        <ul>
+          <li>Внешний вид должен соответствовать как в файле *.jpg.</li>
+          <li>Варианты заданий взять из соответствующей папки.</li>
+          <li>Таблица должна содержать данные для просмотра.</li>
+          <li>Необходимо вынести все стили (шрифт, цвет, стиль и т.п.), описывающие таблицу в отдельный CSS файл, и подключить его к разметке (HTML).</li>
+        </ul>
+        <p>В финальном HTML-документе должна остаться только разметка докумен</p>
+      </div>
+    </div>
+    <div class="main__decision decision">
+      <div class="decision__content">
+        <table class="decision__table table">
+          <tr class="table__row table__row-side">
+            <th class="table__head table__cell">
+              Телепрограмма
+            </th>
+            <td class="table__data table__cell">
+              <table class="sub-table">
+                <tr class="sub-table__row">
+                  <th class="sub-table__head">
+                    Следущая неделя
+                  </th>
+                </tr>
+                <tr class="sub-table__row">
+                  <th class="sub-table__head">
+                    Текущая неделя
+                  </th>
+                </tr>
+                <tr class="sub-table__row">
+                  <th class="sub-table__head">
+                    Предудщая неделя
+                  </th>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="table__row table__row-central">
+            <th class="table__head table__cell">
+              Программы
+            </th>
+            <td class="table__data table__cell">
+              <table class="sub-table sub-table_central">
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      В субботу вечером
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Детали
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Анонсы
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Галерея
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table">
+                          <td class="sub-sub-table__data">
+                            Дневник
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Жизнь прекрасна
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Анонсы
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Галерея
+                          </td>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Истории в деталях
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Анонсы
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Галерея
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table">
+                          <td class="sub-sub-table__data">
+                            Дневник
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Команда
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>   
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Кино в деталях
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Анонсы
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Ведущий
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Галерея
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table">
+                          <td class="sub-sub-table__data">
+                            Дневник
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Скрытая камера с Белоголовцевым и Бочаровым
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Ведущий
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table">
+                          <td class="sub-sub-table__data">
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Галерея
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Снимите это немедленно
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Галерея
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table">
+                          <td class="sub-sub-table__data">
+                            Дневник
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Прими участие
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Советы от программы
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr> 
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Ты - супермодель
+                    </th>
+                    <td class="sub-table__data">
+
+                    </td>
+                  </tr> 
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Ты - супермодель-2
+                    </th>
+                    <td class="sub-table__data">
+
+                    </td>
+                  </tr> 
+                  <tr class="sub-table__row">
+                    <th class="sub-table__head">
+                      Хорошие шутки
+                    </th>
+                    <td class="sub-table__data">
+                      <table class="sub-sub-table">
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Ведущий
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            Галерея
+                          </td>
+                        </tr>
+                        <tr class="sub-sub-table__row">
+                          <td class="sub-sub-table__data">
+                            О программе
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>              
+              </table>
+            </td>
+          </tr>
+          <tr class="table__row table__row-side">
+            <th class="table__head table__cell">
+              Комедийный сериал
+            </th>
+            <td class="table__data table__cell">
+              <table class="sub-table">
+                <tr class="sub-table__row">
+                  <th class="sub-table__head">
+                    Моя прекрасная няня
+                  </th>
+                  <td class="sub-table__data">
+                    <table class="sub-sub-table">
+                      <tr class="sub-sub-table__row">
+                        <td class="sub-sub-table__data">
+                          Галерея
+                        </td>
+                      </tr>
+                      <tr class="sub-sub-table__row">
+                        <td class="sub-sub-table__data">
+                          Описание
+                        </td>
+                      </tr>
+                      <tr class="sub-sub-table__row">
+                        <td class="sub-sub-table__data">
+                          Серии
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,174 @@
+:root {
+  --dotted-border: 1px dotted black
+}
+
+/* Page */
+
+.page {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+} 
+
+/* Body */
+
+.body {  
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.body__title-page {
+  border-bottom: 3px solid black;
+}
+
+/* Title page */
+
+.title-page {
+  height: 40rem;
+}
+
+.title-page__title-page-header {
+  height: 30%;
+}
+
+.title-page__title-page-main {
+  height: 60%;
+}
+
+.title-page__title-page-footer {
+  height: 10%;
+}
+
+/* Title page header */
+
+.title-page-header {
+  text-align: center;
+}
+
+/* Title page main */
+
+.title-page-main__lab-name {
+  text-align: center;
+}
+
+.title-page-main__info {
+  width: 12rem;
+  margin-top: 5rem;
+  margin-right: 1rem;
+  margin-left: auto;
+}
+
+.title-page-main__bold-text {
+  font-weight: bolder;
+}
+
+/* Title page footer */
+
+.title-page-footer {
+  text-align: center;
+}
+
+/* Main */
+
+.main {
+  height: 40rem;
+}
+
+.main__task {
+  border-bottom: 3px solid black;
+}
+
+.main__decision {
+  border-bottom: 3px solid black;
+}
+
+/* Task */
+
+.task__title {
+  margin-left: 1rem;
+  font-weight: bolder;
+}
+
+.task__text {
+  margin-left: 2rem;
+  font-style: italic;
+}
+
+/* Decision */
+
+.decision {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.decision__content {
+  height: 50rem;
+  width: 33rem;
+  padding: 1rem;
+  background-color: rgb(250, 255, 180);
+}
+
+/* Table */
+
+table, td, tr, th {
+  border: 1px solid blue;
+}
+
+.table {
+  border-collapse: collapse;
+  height: 100%;
+  width: 100%;
+  font-size: 0.7rem;
+}
+
+.table__row {
+  margin: 2rem 0;
+}
+
+.table__row-central {
+  height: auto;
+  border-top: var(--dotted-border);
+  border-bottom: var(--dotted-border);
+}
+
+.table__row-side {
+  height: 10%;
+}
+
+.table__head {
+  width: 20%;
+  color: rgb(235, 23, 23);
+  text-align: start;
+  vertical-align: text-top;
+}
+
+/* Sub-table */
+
+.sub-table {
+  border-collapse: collapse;
+  height: 100%;
+  width: 100%;
+}
+
+.sub-table_central .sub-table__row {
+  border-bottom: var(--dotted-border);
+}
+
+.sub-table__row:nth-last-child(1) {
+  border-bottom: none;
+}
+
+.sub-table__head {
+  width: 50%;
+  text-align: start;
+  vertical-align: text-top;
+}
+
+/* Sub-sub-table */
+
+.sub-sub-table {
+  height: 100%;
+  border-collapse: collapse;
+}
