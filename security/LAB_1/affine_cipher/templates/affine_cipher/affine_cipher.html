@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" class="page">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/affine_cipher.css' %}">
+  <script defer type="text/javascript" src="{% static 'js/affine_cipher.js' %}"></script>
+  <title>Affine cipher</title>
+</head>
+<body class="body">
+  <div class="content">
+    <div class="keys">
+      <label>Ключ 1: 
+        <select class="key1-input key-input input">
+          <option value="2">2</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="10">10</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <!-- <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="31">31</option>
+          <option value="32">32</option> -->
+        </select>
+      </label>
+      <label>Ключ 2: <input type="number" min="1" max="32" value="1" class="key2-input key-input input"></label>
+    </div>
+    <label>Исходный текст: <input type="text" class="text-input input"></label>
+    <label>Зашифрованный текст: <input type="text" class="cipher-input input"></label>
+    <div class="buttons">
+      <button type="button" class="encryption-button button">Шифровать</button>
+      <button type="button" class="decryption-button button">Расшифровать</button>
+    </div>
+  </div>
+</body>
+</html>
