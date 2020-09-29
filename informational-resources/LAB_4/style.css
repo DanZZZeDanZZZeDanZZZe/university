@@ -1,0 +1,159 @@
+/* Page */
+
+.page {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+} 
+
+/* Body */
+
+.body {  
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.body__title-page {
+  border-bottom: 3px solid black;
+}
+
+/* Title page */
+
+.title-page {
+  height: 40rem;
+}
+
+.title-page__title-page-header {
+  height: 30%;
+}
+
+.title-page__title-page-main {
+  height: 60%;
+}
+
+.title-page__title-page-footer {
+  height: 10%;
+}
+
+/* Title page header */
+
+.title-page-header {
+  text-align: center;
+}
+
+/* Title page main */
+
+.title-page-main__lab-name {
+  text-align: center;
+}
+
+.title-page-main__info {
+  width: 12rem;
+  margin-top: 5rem;
+  margin-right: 1rem;
+  margin-left: auto;
+}
+
+.title-page-main__bold-text {
+  font-weight: bolder;
+}
+
+/* Title page footer */
+
+.title-page-footer {
+  text-align: center;
+}
+
+/* Main */
+
+.main {
+  height: 40rem;
+}
+
+.main__task {
+  border-bottom: 3px solid black;
+}
+
+.main__decision {
+  padding-left: 2rem;
+  border-bottom: 3px solid black;
+}
+
+/* Task */
+
+.task__title {
+  margin-left: 1rem;
+  font-weight: bolder;
+}
+
+.task__text {
+  margin-left: 2rem;
+  font-style: italic;
+}
+
+/* Decision */
+
+.decision {
+  height: 50rem;
+}
+
+.decision__title {
+  padding-left: 1rem;
+  font-weight: bold;
+  color: rgb(84, 22, 141);
+}
+
+/* Menu */
+
+.menu {
+  width: 30rem;
+}
+
+.menu__item {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  padding-left: 2rem;
+  background: url("./arrow.svg") no-repeat left top;
+  list-style-type: none;
+}
+
+.menu__item:hover {
+  background-color: rgb(255, 237, 134);
+  cursor: pointer;
+  border-radius: .2rem;
+  transform: translateX(.3rem);
+  transition: all .2s;
+}
+
+/* Menu2 */
+
+.menu-2 {
+  width: 10rem;
+  padding: 1rem 0;
+  background-color: #795548;
+  list-style-type: none;
+  box-shadow:  0 0 2px 0 rgba(0, 0, 0, 0.14),
+  0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.menu-2__item {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  height: 2rem;
+  color:white;
+  font-weight: 200;
+}
+
+.menu-2__item:hover {
+  background: #cddc39;
+  color: black;
+  cursor: pointer;
+  font-stretch: normal;
+  transform: translateX(.7rem);
+  transition: all .3s;
+  box-shadow:  0 0 2px 0 rgba(0, 0, 0, 0.14),
+  0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
