@@ -1,4 +1,4 @@
-import text from '!!raw-loader!./static/data-1.txt';
+import text from '!!raw-loader!./static/data-3.txt';
 import './style.css'
 import mean from 'lodash/mean';
 import * as d3 from 'd3';
@@ -63,7 +63,7 @@ const height = 800
 const width = 1200
 const margin = {top: 20, right: 20, bottom: 30, left: 100}
 
-const svg = d3.select('body').append('svg')
+const svg = d3.select('.chart').insert('svg')
   .attr('width', width)
   .attr('height', height);
 
@@ -87,6 +87,26 @@ svg.append('g')
   .attr('y', d => yScale(d))
   .attr('height', d => yScale(0) - yScale(d))
   .attr('width', xScale.bandwidth())
+
+
+const CRLine = d3.line()
+  //.curve(d3.curveBasis)
+  .y(d => yScale(d))
+  .x((_, index) => xScale(index))
+  .curve(d3.curveMonotoneX);
+
+// svg.append("g")
+//   //.append("path")
+//   .attr("d", CRLine(CR))
+//   .style("stroke", "red")
+//   .style("stroke-width", 2);
+
+svg.append("path")
+  .attr("class", "line")
+  .attr("d", CRLine(CR))
+  .style("stroke", "green")
+  .style('stroke-width', '5')
+  .style('fill', 'none')
 
 const yAxis = g => g
   .attr('transform', `translate(${margin.left},0)`)
