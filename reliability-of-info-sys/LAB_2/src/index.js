@@ -1,6 +1,7 @@
-import text from '!!raw-loader!./static/data-1.txt';
-import './style.css'
+import text from '!!raw-loader!./static/data-3.txt'
+import { printTables, printValues } from './utils'
 import createCahart from './chart'
+import './style.css'
 
 const exp = number => Math.exp(number) 
 const abs = number => Math.abs(number) 
@@ -44,19 +45,23 @@ const CR = Mas_otk.reduce((result, item, index) => {
   return [...prevResult, resultItem]
 })
 
-console.log('Icx_mass', Icx_mass)
-console.log('Mas_vos', Mas_vos)
+const values = [
+  ['N', N],
+  ['To_oz', To_oz],
+  ['Tv_oz', Tv_oz],
+  ['K_og', K_og],
+  ['Kgot_oz', Kgot_oz],
+  ['P_nf', P_nf],
+  ['N_0', N_0],
+]
 
-console.log('N ', N)
-console.log('To_oz', To_oz)
-console.log('Tv_oz', Tv_oz)
-console.log('K_og', K_og)
-console.log('Kgot_oz', Kgot_oz)
-console.log('P_nf', P_nf)
-console.log('N_0', N_0)
-console.log('CR', CR)
+const tableValues = [
+  ['Icx_mass',Icx_mass],
+  ['Mas_vos', Mas_vos],
+  ['Mas_otk', Mas_otk],
+  ['CR', CR],
+]
 
-const query = (selector) => document.querySelector(selector)
-const inserTt = (selector, HTML) => query(selector).innerHTML = HTML
-
+printValues(values, ".values")
 createCahart({ Mas_otk, CR, To_oz }, '.chart')
+printTables(tableValues, '.result-holder')
