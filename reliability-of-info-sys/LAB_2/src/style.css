@@ -1,0 +1,29 @@
+.chart-Mas_ot {
+  fill: rgb(255, 96, 81);
+}
+
+.chart-CR {
+  fill: rgb(128, 255, 0)
+}
+
+.chart-To_oz {
+  stroke: rgb(0, 45, 82);
+  stroke-width: 2px;
+}
+
+.legend {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.legend-circle-1 {
+  fill: rgb(255, 96, 81);
+}
+
+.legend-circle-2 {
+  fill: rgb(128, 255, 0)
+}
+
+.legend-circle-3 {
+  fill: rgb(0, 45, 82);
+}

@@ -1,10 +1,10 @@
-import text from '!!raw-loader!./static/data-3.txt';
+import text from '!!raw-loader!./static/data-1.txt';
 import './style.css'
-import mean from 'lodash/mean';
-import * as d3 from 'd3';
+import createCahart from './chart'
 
-const exp = (number) => Math.exp(number) 
-const abs = (number) => Math.abs(number) 
+const exp = number => Math.exp(number) 
+const abs = number => Math.abs(number) 
+const mean = arr => arr.reduce((a, b) => a + b) / arr.length
 
 const Icx_mass = text
   .split('\n')
@@ -57,67 +57,6 @@ console.log('N_0', N_0)
 console.log('CR', CR)
 
 const query = (selector) => document.querySelector(selector)
-const insert = (selector, HTML) => query(selector).innerHTML = HTML
+const inserTt = (selector, HTML) => query(selector).innerHTML = HTML
 
-const height = 800
-const width = 1200
-const margin = {top: 20, right: 20, bottom: 30, left: 100}
-
-const svg = d3.select('.chart').insert('svg')
-  .attr('width', width)
-  .attr('height', height);
-
-const rangeX = [margin.left, width - margin.right]
-const rangeY = [height - margin.bottom, margin.top]
-
-const xScale = d3.scaleBand()
-  .domain(Mas_otk.map((_, index) => index))
-  .range(rangeX)
-
-const yScale = d3.scaleLinear()
-  .domain([d3.min(Mas_otk), d3.max(Mas_otk)])
-  .range(rangeY);
-
-svg.append('g')
-  .attr('fill', 'steelblue')
-  .selectAll('rect')
-  .data(Mas_otk)
-  .join('rect')
-  .attr('x', (_, index) => xScale(index))
-  .attr('y', d => yScale(d))
-  .attr('height', d => yScale(0) - yScale(d))
-  .attr('width', xScale.bandwidth())
-
-
-const CRLine = d3.line()
-  //.curve(d3.curveBasis)
-  .y(d => yScale(d))
-  .x((_, index) => xScale(index))
-  .curve(d3.curveMonotoneX);
-
-// svg.append("g")
-//   //.append("path")
-//   .attr("d", CRLine(CR))
-//   .style("stroke", "red")
-//   .style("stroke-width", 2);
-
-svg.append("path")
-  .attr("class", "line")
-  .attr("d", CRLine(CR))
-  .style("stroke", "green")
-  .style('stroke-width', '5')
-  .style('fill', 'none')
-
-const yAxis = g => g
-  .attr('transform', `translate(${margin.left},0)`)
-  .call(d3.axisLeft(yScale).ticks(null, 'e'))
-
-const xAxis = g => g
-  .attr('transform', `translate(0,${height - margin.bottom})`)
-  .call(d3.axisBottom(xScale).tickValues(xScale.domain().filter((_,i) => !(i%100))))
-
-svg.append('g')
-  .call(yAxis)
-
-svg.append('g')
-  .call(xAxis)
+createCahart({ Mas_otk, CR, To_oz }, '.chart')
