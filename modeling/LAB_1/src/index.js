@@ -17,6 +17,10 @@ import {
 import {
   calcKolmogorovTest
 } from './test-criteria/kolmogorov-test'
+import {
+  calcSeriesCriterion
+} from './test-criteria/series-criterion'
+
 
 const Y1 = 3215
 const Y2 = 4073
@@ -64,8 +68,13 @@ insert('.second', calcSeconCentralMoment(randomNumbers))
 insert('.third', calcThirdCentralMoment(randomNumbers))
 
 const hitRateCounts = hitRate.map(({count}) => count)
-const x2 = clacX2forEquiprobable(hitRateCounts, N)
-const kolmogorovTest = calcKolmogorovTest(randomNumbers)
+const pearsonTest = clacX2forEquiprobable(hitRateCounts, N)
+const sortedRandomNumbers = [...randomNumbers].sort()
+const kolmogorovTest = calcKolmogorovTest(sortedRandomNumbers)
+const seriesCriterion = calcSeriesCriterion(randomNumbers, 0.3, 2.33)
+const toFixed = num => +num.toFixed(3)
+const {VN, MV, VB} = seriesCriterion
 
-console.log('x2', x2)
-console.log('kolmogorovTest', kolmogorovTest)
+insert('.pearson-test', pearsonTest)
+insert('.kolmogorov-test', kolmogorovTest)
+insert('.series-criterion', `${toFixed(VN)} <= ${toFixed(MV)} <= ${toFixed(VB)}`)
