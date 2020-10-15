@@ -1,0 +1,43 @@
+.page, .body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  padding: 1rem; 
+  background-color: rgb(102, 90, 205);
+  color: white;
+  box-sizing: border-box;
+}
+
+.main {
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem; 
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 30%;
+  height: 50%;
+}
+
+.input {
+  height: 2rem;
+  margin: 0 1rem;
+}
