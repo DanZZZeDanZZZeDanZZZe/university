@@ -11,6 +11,16 @@ import {
   calcSeconCentralMoment,
   calcThirdCentralMoment
 } from './utils.js'
+import {
+  clacX2forEquiprobable
+} from './test-criteria/pearson-test'
+import {
+  calcKolmogorovTest
+} from './test-criteria/kolmogorov-test'
+import {
+  calcSeriesCriterion
+} from './test-criteria/series-criterion'
+
 
 const Y1 = 3215
 const Y2 = 4073
@@ -33,20 +43,38 @@ const ctxStatisticalDistributionFunction = query('#statistical-distribution-func
 
 const randomNumbers = getRandomNumbers(initalValues)
 const hitRate = getHitRate(randomNumbers, PRECISION)
-const stackedHits = getStackedHits(hitRate) 
+
+const normolizeHitRate = hitRate.map((item) => {
+  const {count} = item
+  return {...item, count: count / N}
+})
+
+const normolizeStackedHits = getStackedHits(normolizeHitRate) 
 const matchExpect = calcMatchExpect(randomNumbers)
+
+new Chart(
+  ctxFrequencyHistogram,
+  createFrequencyHistogram(normolizeHitRate)
+);
+
+new Chart(
+  ctxStatisticalDistributionFunction,
+  createStatisticalDistributionFunction(normolizeStackedHits)
+);
 
 insert('.MO', matchExpect)
 insert('.D', calcDispersion(randomNumbers, matchExpect))
 insert('.second', calcSeconCentralMoment(randomNumbers))
 insert('.third', calcThirdCentralMoment(randomNumbers))
 
-new Chart(
-  ctxFrequencyHistogram,
-  createFrequencyHistogram(hitRate)
-);
+const hitRateCounts = hitRate.map(({count}) => count)
+const pearsonTest = clacX2forEquiprobable(hitRateCounts, N)
+const sortedRandomNumbers = [...randomNumbers].sort()
+const kolmogorovTest = calcKolmogorovTest(sortedRandomNumbers)
+const seriesCriterion = calcSeriesCriterion(randomNumbers, 0.3, 2.33)
+const toFixed = num => +num.toFixed(3)
+const {VN, MV, VB} = seriesCriterion
 
-new Chart(
-  ctxStatisticalDistributionFunction,
-  createStatisticalDistributionFunction(stackedHits)
-);
+insert('.pearson-test', pearsonTest)
+insert('.kolmogorov-test', kolmogorovTest)
+insert('.series-criterion', `${toFixed(VN)} <= ${toFixed(MV)} <= ${toFixed(VB)}`)
