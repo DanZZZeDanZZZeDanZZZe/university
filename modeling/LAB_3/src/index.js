@@ -17,7 +17,7 @@ import {
 } from './test-criteria/kolmogorov-test'
 
 //указываем обьем выборки и границы интервала
-const N = 9000
+const N = 3000
 const intervalStart = 0
 const intervalEnd = 3
 
@@ -30,10 +30,10 @@ const func1 = (x) => 0.25 * x ** 2
 const func2 = (x) => 1.14 * x - 0.89
 const func3 = (x) => 1 - 0.08 * (x - 3) ** 2
 
-// //функции плотности распределния (используются в критерии Пирсона)
-// const funcDensity1 = (x) => 0.25 * 2 * x
-// const funcDensity2 = (x) => 1.14
-// const funcDensity3 = (x) => 0.48 - 0.16 * x
+//обратные функции, для поиска x в критерии колмогорова
+const inverseFunc1 = (y) => Math.sqrt(y / 0.25)
+const inverseFunc2 = (y) => (y + 0.89 )/ 1.14 
+const inverseFunc3 = (y) => Math.sqrt((1 - y) / 0.08) + 3
 
 //так как функции монотонно возрастающие, то с находим, как значение функции,
 //на конце интервала
@@ -59,10 +59,22 @@ const normolizeHitRate = hitRate.map((item) => {
 const normolizeStackedHits = getStackedHits(normolizeHitRate) 
 const matchExpect = calcMatchExpect({randomNumbers, n: N})
 
-// const hitRateCounts = hitRate.map(({count}) => count)
-// const pearsonTest = clacX2forEquiprobable(hitRateCounts, N)
 const sortedRandomNumbers = [...randomNumbers].sort()
-const kolmogorovTest = calcKolmogorovTest(sortedRandomNumbers)
+
+//функция для выражения x в критерии калмогорова
+const dynamicFunc = (y) => {
+  const a1 = func1(interval1.a)
+  const b1 = func1(interval1.b)
+  if (y > a1 && y < b1) return inverseFunc1(y)
+  const a2 = func2(interval2.a)
+  const b2 = func2(interval2.b)
+  if (y >= a2 && y < b2) return inverseFunc2(y)
+  const a3 = func3(interval3.a)
+  const b3 = func3(interval3.b)
+  if (y >= a3 && y <= b3) return inverseFunc3(y)
+}
+//const kolmogorovTest = calcKolmogorovTest(randomNumbers1.sort())
+const kolmogorovTest = calcKolmogorovTest(sortedRandomNumbers.sort(), dynamicFunc)
 
 const query = (selector) => document.querySelector(selector)
 const insert = (selector, HTML) => query(selector).innerHTML = HTML
@@ -80,5 +92,4 @@ new Chart(
 )
 insert('.MO', matchExpect)
 insert('.D', calcDispersion({randomNumbers, matchExpect, n: N}))
-// insert('.pearson-test', pearsonTest)
-insert('.kolmogorov-test', Math.round(kolmogorovTest))
+insert('.kolmogorov-test', kolmogorovTest)
