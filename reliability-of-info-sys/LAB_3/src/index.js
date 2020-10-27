@@ -20,7 +20,7 @@ function calcT(lambda, t) {
 	return -1 / lambda * Math.log(Math.random())
 }
 
-const tLength = 10e5
+const tLength = 0.8 * 10e5
 const tStep = 10e3
 const lambdaValues = [
   2 * 10e-5,
@@ -76,12 +76,14 @@ const Nc = results2.map((el) => {
 })
 
 const PcC = zip(...Nc).map((i) => {
-  return i.reduce((a, b) => a + b) /  tLength * tStep
+  return i.reduce((a, b) => a + b) / tLength * tStep
 })
 
-console.log('maxTc', maxTc)
-console.log('minTc', minTc)
-console.log('Diap', Diap)
+console.log('maxTc', maxTc.toFixed(2))
+console.log('minTc', minTc.toFixed(2))
+console.log('Diap', Diap.toFixed(2))
+console.log('ChInt', ChInt)
+console.log('Int', Int)
 
 new Chart(document.getElementById("line-chart"), {
   type: 'line', 
