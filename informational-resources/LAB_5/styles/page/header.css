@@ -1,0 +1,67 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem var(--side-padding);
+  font-size: 2em;
+}
+
+/* logo */
+
+.header__logo {
+  justify-self: self-start;
+  height: 3rem;
+  margin-right: 5%;
+}
+
+/* search */
+
+.header__search {
+  align-self: stretch;
+  width: 25%;
+  margin-right: auto;
+  padding: 0 0.5rem;
+  border: 2px solid rgb(197, 197, 197);
+  border-radius: var(--border-radius);
+  font-size: initial;
+}
+
+/* button */
+
+.header__button {
+  display: flex;
+  align-items: center;
+  margin-right: 3%;
+  padding: 0.5rem;
+  background: inherit;
+  border: 2px solid transparent;
+  font-size: initial;
+  font-weight: bold;
+}
+
+.header__button:hover {
+  border: 2px solid black;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.header__button > span {
+  margin-left: 0.3rem;
+}
+
+/* enter-button */
+
+.header__enter-button {
+  padding: 0.5rem 1rem;
+  border: 2px solid black;
+  border-radius: 17px;
+  background-color: black;
+  font-size: initial;
+  font-weight: bold;
+  color: white;
+}
+
+.header__enter-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

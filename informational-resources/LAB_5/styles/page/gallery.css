@@ -1,0 +1,33 @@
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    "foto-1 foto-2" 
+    "foto-1 foto-3";
+  height: 30rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* image */
+
+.gallery__image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.gallery__image:nth-child(1) {
+  grid-area: foto-1;
+  height: 30rem;
+}
+
+.gallery__image:nth-child(2) {
+  grid-area: foto-2;
+  height: 15rem;
+}
+
+.gallery__image:nth-child(3) {
+  grid-area: foto-3;
+  height: 15rem;
+}

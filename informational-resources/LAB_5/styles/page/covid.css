@@ -1,0 +1,10 @@
+.covid {
+  padding: 1rem var(--side-padding);
+  background-color: #faf1ed;
+}
+
+/* text */
+
+.covid__text {
+  font-weight: 600;
+}

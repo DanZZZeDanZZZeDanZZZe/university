@@ -1,0 +1,19 @@
+.main {
+  padding: 0 var(--side-padding);
+}
+
+/* title */
+
+.main__title {
+  font-size: 4rem;
+}
+
+.main__title > span{
+  color: var(--color-red)
+}
+
+/* menu */
+
+.main__menu {
+  margin-bottom: 5rem;
+}
