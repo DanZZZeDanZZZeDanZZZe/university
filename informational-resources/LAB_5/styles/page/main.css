@@ -17,3 +17,9 @@
 .main__menu {
   margin-bottom: 5rem;
 }
+
+/* location */
+
+.main__location {
+  margin: 2rem 0;
+}

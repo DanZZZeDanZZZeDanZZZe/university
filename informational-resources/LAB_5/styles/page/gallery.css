@@ -5,6 +5,7 @@
   grid-template-areas: 
     "foto-1 foto-2" 
     "foto-1 foto-3";
+  position: relative;
   height: 30rem;
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -30,4 +31,32 @@
 .gallery__image:nth-child(3) {
   grid-area: foto-3;
   height: 15rem;
+}
+
+/* button-show */
+
+.gallery__button-show {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: .5rem;
+  background: rgba(0, 0, 0, 0.644);
+  border-radius: 20px;
+  border: none;
+}
+
+.gallery__button-show:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.544);
+}
+
+.gallery__button-show > span {
+  color: white
+}
+
+.gallery__button-show > svg {
+  fill: white;
 }

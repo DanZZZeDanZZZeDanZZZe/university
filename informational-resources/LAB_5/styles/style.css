@@ -1,0 +1,113 @@
+:root {
+  --dotted-border: 1px dotted black
+}
+
+/* Page */
+
+.page {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+} 
+
+/* Body */
+
+.body {  
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.body__title-page {
+  border-bottom: 3px solid black;
+}
+
+/* Title page */
+
+.title-page {
+  height: 40rem;
+}
+
+.title-page__title-page-header {
+  height: 30%;
+}
+
+.title-page__title-page-main {
+  height: 60%;
+}
+
+.title-page__title-page-footer {
+  height: 10%;
+}
+
+/* Title page header */
+
+.title-page-header {
+  text-align: center;
+}
+
+/* Title page main */
+
+.title-page-main__lab-name {
+  text-align: center;
+}
+
+.title-page-main__info {
+  width: 12rem;
+  margin-top: 5rem;
+  margin-right: 1rem;
+  margin-left: auto;
+}
+
+.title-page-main__bold-text {
+  font-weight: bolder;
+}
+
+/* Title page footer */
+
+.title-page-footer {
+  text-align: center;
+}
+
+/* Main */
+
+.main {
+  height: 40rem;
+}
+
+.main__task {
+  border-bottom: 3px solid black;
+}
+
+.main__decision {
+  border-bottom: 3px solid black;
+}
+
+/* Task */
+
+.task__title {
+  margin-left: 1rem;
+  font-weight: bolder;
+}
+
+.task__text {
+  margin-left: 2rem;
+  font-style: italic;
+}
+
+/* Decision */
+
+.decision {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.decision__a {
+  font-size: 3rem
+}
+
+.decision__a:hover {
+  transition: all 1s ease-in;
+  color: red;
+}
