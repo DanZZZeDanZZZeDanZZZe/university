@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAB_3</title>
+</head>
+<body class="body">
+  <header class="body__header header">
+    <h1 class="header__title title">Лабораторная 3</h1>
+    <p class="header__sign sign">Выполнил: Гракнин А.Н.</p>
+  </header>
+  <main class="body__content content">
+    <div class="content__content-box content-box">
+      <p class="content-box__chart-name chart-name">
+        Гистограмма частот
+      </p>
+      <canvas id="frequency-histogram"></canvas>
+    </div>
+    <div class="content__content-box content-box">
+      <p class="content-box__chart-name chart-name">
+        Cтатистическая функция распределения
+      </p>
+      <canvas id="statistical-distribution-function"></canvas>
+    </div>
+    <div class="content__content-box content-box">
+      <div class="content-box__results results">
+        <p class="results__result result"> 
+          МО = <span class="result__MO MO"></span>
+        </p>
+        <p class="results__result result">
+          D = <span class="result__D D"></span>
+        </p>
+        <p class="results__result result">
+          Критерий колмогорова: &#955; = <span class="result__kolmogorov-test kolmogorov-test"></span>
+        </p>  
+      </div>      
+    </div>
+    <!-- <div class="content__content-box content-box">
+      
+       <p class="results__result result">
+        Критерий пирсона: x2 = <span class="result__pearson-test pearson-test"></span>
+      </p> 
+    </div>    -->
+    </div>
+  </main>
+</body>
+</html>
