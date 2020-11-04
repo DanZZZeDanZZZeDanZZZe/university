@@ -23,17 +23,16 @@ const M = 0.5
 const D = 0.083
 
 const arr = (n) => new Array(n).fill()
-//обратная функция для нормального распределения на интервале (0, 1)
-const func = (y) => {
+//функция для нормального распределения на интервале (0, 1)
+const func = (x) => {
   const sqrt = (n) => Math.sqrt(n)
-  const ln = (n) => Math.log(n)
-  const pi = Math.PI
-  const piece = sqrt(-2 * D * ln(sqrt(D) * sqrt(2* pi) * y))
-  return y <= 0.5 ? M - piece : M + piece
+  const {E, PI} = Math
+  //return (1 / (sqrt(D) * sqrt(2 * PI))) * E ** ((x - M) ** 2 / 2 * D)
+  return (1 / (sqrt(D) * sqrt(2 * PI))) * E ** ((x - M) ** 2 / 2 * D)
+  // return (1 / (sqrt(2 * PI))) * E ** ((x - M) ** 2 / 2 )
 }
-
-//создаем интервалы для диаграмм
 const step = 1 / 25
+//создаем интервалы для диаграмм
 const ranges = arr(25).map((_, index) => {
   const start = index * step
   const end = (index + 1) * step
@@ -44,9 +43,16 @@ const ranges = arr(25).map((_, index) => {
   }
 })
 
+const pt = ranges.map(({scope}) => {
+  const [start, end] = scope
+  console.log("(start + end) / 2", (start + end) / 2)
+  return func((start + end) / 2)
+})
+console.log("pt", pt)
+
 const randomNumbers = clalcByTheLimitCentralTheorem({m: M , d: D, n: N})
 const hitRate = getHitRate({randomNumbers, ranges})
-
+console.log(randomNumbers.map(i => func(i)))
 const normolizeHitRate = hitRate.map((item) => {
   const {count} = item
   return {...item, count: count / N}
@@ -54,24 +60,12 @@ const normolizeHitRate = hitRate.map((item) => {
 
 const normolizeStackedHits = getStackedHits(normolizeHitRate) 
 const matchExpect = calcMatchExpect({randomNumbers, n: N})
-
-// const sortedRandomNumbers = [...randomNumbers].sort()
-
-// //функция для выражения x в критерии калмогорова
-// const dynamicFunc = (y) => {
-//   const a1 = func1(interval1.a)
-//   const b1 = func1(interval1.b)
-//   if (y > a1 && y < b1) return inverseFunc1(y)
-//   const a2 = func2(interval2.a)
-//   const b2 = func2(interval2.b)
-//   if (y >= a2 && y < b2) return inverseFunc2(y)
-//   const a3 = func3(interval3.a)
-//   const b3 = func3(interval3.b)
-//   if (y >= a3 && y <= b3) return inverseFunc3(y)
-// }
-
-const kolmogorovTest = calcKolmogorovTest(randomNumbers.sort(), func)
-
+//const kolmogorovTest = calcKolmogorovTest(randomNumbers.sort(), func)
+const X2 = clacX2forEquiprobable({
+  hitRate: hitRate.map(({count}) => count), 
+  n: N,
+  pt
+})
 const query = (selector) => document.querySelector(selector)
 const insert = (selector, HTML) => query(selector).innerHTML = HTML
 
