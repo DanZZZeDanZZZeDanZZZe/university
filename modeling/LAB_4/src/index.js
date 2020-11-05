@@ -11,6 +11,9 @@ import {
   calcDispersion,
 } from './utils.js'
 import {
+  erf, sqrt, abs
+} from 'mathjs'
+import {
   clacX2forEquiprobable
 } from './test-criteria/pearson-test'
 import {
@@ -19,40 +22,35 @@ import {
 
 //указываем обьем выборки и границы интервала
 const N = 90000
-const M = 0.5
-const D = 0.083
+const M = 3
+const D = 1
+const intervalStart = 0
+const intervalEnd = 6
 
 const arr = (n) => new Array(n).fill()
-//функция для нормального распределения на интервале (0, 1)
 const func = (x) => {
-  const sqrt = (n) => Math.sqrt(n)
-  const {E, PI} = Math
-  //return (1 / (sqrt(D) * sqrt(2 * PI))) * E ** ((x - M) ** 2 / 2 * D)
-  return (1 / (sqrt(D) * sqrt(2 * PI))) * E ** ((x - M) ** 2 / 2 * D)
-  // return (1 / (sqrt(2 * PI))) * E ** ((x - M) ** 2 / 2 )
+  return 0.5 * abs(1 + erf((x - M) / (D * sqrt(2))))
 }
-const step = 1 / 25
+const step = (intervalEnd - intervalStart) / 15
 //создаем интервалы для диаграмм
-const ranges = arr(25).map((_, index) => {
+const ranges = arr(15).map((_, index) => {
   const start = index * step
   const end = (index + 1) * step
 
   return {
-    name: `[${start}, ${end})`,
+    name: `[${start.toFixed(2)}, ${end.toFixed(2)})`,
     scope: [start, end]
   }
 })
 
 const pt = ranges.map(({scope}) => {
   const [start, end] = scope
-  console.log("(start + end) / 2", (start + end) / 2)
-  return func((start + end) / 2)
+  return abs(func(start) - func(end))
 })
-console.log("pt", pt)
 
 const randomNumbers = clalcByTheLimitCentralTheorem({m: M , d: D, n: N})
 const hitRate = getHitRate({randomNumbers, ranges})
-console.log(randomNumbers.map(i => func(i)))
+//console.log(randomNumbers.map(i => func(i)))
 const normolizeHitRate = hitRate.map((item) => {
   const {count} = item
   return {...item, count: count / N}
@@ -66,6 +64,9 @@ const X2 = clacX2forEquiprobable({
   n: N,
   pt
 })
+
+
+console.log("X2", X2)
 const query = (selector) => document.querySelector(selector)
 const insert = (selector, HTML) => query(selector).innerHTML = HTML
 
@@ -82,4 +83,4 @@ new Chart(
 )
 insert('.MO', matchExpect)
 insert('.D', calcDispersion({randomNumbers, matchExpect, n: N}))
-insert('.kolmogorov-test', kolmogorovTest.toFixed(3))
+//insert('.kolmogorov-test', kolmogorovTest.toFixed(3))

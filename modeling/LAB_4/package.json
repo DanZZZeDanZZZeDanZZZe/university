@@ -29,6 +29,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "chart.js": "^2.9.3"
+    "chart.js": "^2.9.3",
+    "mathjs": "^7.6.0"
   }
 }
