@@ -142,6 +142,28 @@ function clalcByTheLimitCentralTheorem({m, d, n}) {
   })
 }
 
+function calcByMarsalieAndBraille({m, d, n}) {
+  const calcValue = (s) =>  Math.sqrt(-2 * Math.log(s) / s)
+  const calcResult = (m, u, s, d) => (m + u * calcValue(s) * Math.sqrt(d))
+  const calcU = (r) => -1 + 2 * r
+  let i = 0
+  const xResult = []
+  const yResult = []
+  while (i < n) {
+    const r1 = Math.random()
+    const r2 = Math.random()
+    const u1 = calcU(r1)
+    const u2 = calcU(r2)
+    const s = u1 * u1 + u2 * u2
+    if (s <= 1) {
+      xResult.push(calcResult(m, u1, s, d))
+      yResult.push(calcResult(m, u2, s, d))
+      i++
+    }
+  }
+  return {xResult, yResult}
+}
+
 export {
   clalcByTheLimitCentralTheorem,
   getRndNumsBySelectionMethod,
@@ -150,5 +172,6 @@ export {
   calcMatchExpect,
   calcDispersion,
   calcSeconCentralMoment,
-  calcThirdCentralMoment
+  calcThirdCentralMoment,
+  calcByMarsalieAndBraille
 } 

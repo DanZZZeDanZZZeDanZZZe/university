@@ -5,6 +5,7 @@ import createStatisticalDistributionFunction from './charts/statistical-distribu
 import { 
   getRndNumsBySelectionMethod,
   clalcByTheLimitCentralTheorem,
+  calcByMarsalieAndBraille,
   getHitRate,
   getStackedHits,
   calcMatchExpect,
@@ -45,12 +46,12 @@ const ranges = arr(15).map((_, index) => {
 
 const pt = ranges.map(({scope}) => {
   const [start, end] = scope
+  console.log("abs(func(start) - func(end))", abs(func(start) - func(end)))
   return abs(func(start) - func(end))
 })
 
-const randomNumbers = clalcByTheLimitCentralTheorem({m: M , d: D, n: N})
+const randomNumbers = calcByMarsalieAndBraille({m: M , d: D, n: N}).xResult//clalcByTheLimitCentralTheorem({m: M , d: D, n: N})
 const hitRate = getHitRate({randomNumbers, ranges})
-//console.log(randomNumbers.map(i => func(i)))
 const normolizeHitRate = hitRate.map((item) => {
   const {count} = item
   return {...item, count: count / N}
@@ -83,4 +84,4 @@ new Chart(
 )
 insert('.MO', matchExpect)
 insert('.D', calcDispersion({randomNumbers, matchExpect, n: N}))
-//insert('.kolmogorov-test', kolmogorovTest.toFixed(3))
+insert('.pearson-test', X2.toFixed(3))
