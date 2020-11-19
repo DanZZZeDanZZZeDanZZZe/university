@@ -39,7 +39,7 @@ def monte_carlo_solution(n, p0, p1, p2, p3):
     return round(count / n, 5)
 
 
-n = 10000000
+n = 1000000
 p0 = 0.7
 p1 = 0.5
 p2 = 0.7
