@@ -1,0 +1,79 @@
+.body {
+    font-family: sans-serif;
+    font-size: large;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main__button {
+    padding: 1rem 2rem;
+}
+
+.main__button:hover {
+    cursor: pointer;
+}
+
+.modal-window__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.555);
+    animation: .25s ease-in appearance;
+}
+
+.modal-window__box {
+    display: grid;
+    grid-template-rows: 1fr 15%;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    min-height: 15rem;
+    min-width: 30%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    animation: .3s ease-in drop;
+}
+
+.modal-window__content-handler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / 3;
+}
+
+.modal-window__button:hover {
+    cursor: pointer;
+}
+
+@keyframes appearance {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drop {
+    from {
+        opacity: 0;
+        transform: translateY(-100vh);
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
