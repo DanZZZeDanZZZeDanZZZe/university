@@ -11,9 +11,8 @@ def generate_gamma(size):  # генерация списка случаных ч
         return lcg.rnd(5, 4003, 4096, seed)
 
     while (len(results) < size):
-        # деление по модулю на size - 1
-        # позволяет ограничить значение случайных чисел
-        seed = rnd() % size - 1
+        # деление по модулю на size позволяет ограничить значение случайных чисел
+        seed = rnd() % size
         results.append(seed)
     return results
 
@@ -27,24 +26,22 @@ def get_indexes(alphabet, word):  # получение списка позици
 
 
 def encrypt(message, alphabet, gamma):  # функция шифрования
-    max_num = len(alphabet) - 1
     # получаем индексы
     message_indexes = get_indexes(alphabet, message)
     # гаммируем
     # складываем индексы с гаммой и делим на максимально допустимый индекс
-    new_message_indexes = [(x+y) % max_num
+    new_message_indexes = [(x+y) % len(alphabet)
                            for x, y in zip(message_indexes, gamma)]
 
     return get_word(alphabet, new_message_indexes)
 
 
 def decrypt(cipher, alphabet, gamma):  # функция расшифрования
-    max_num = len(alphabet) - 1
     # получаем индексы
     cipher_indexes = get_indexes(alphabet, cipher)
     # получаем исходные позиции
     # прибавив максимальную позицию и отняв гамму
-    new_cipher_indexes = [(x+max_num - y) % max_num
+    new_cipher_indexes = [(x + len(alphabet) - y) % len(alphabet)
                           for x, y in zip(cipher_indexes, gamma)]
 
     return get_word(alphabet, new_cipher_indexes)
